@@ -1,0 +1,18 @@
+﻿@using CrudMVC_App.Entities
+@model (ApplicationUser User, IList<string> Roles)
+
+<form asp-action="EditUserRoles" method="post">
+    <input type="hidden" name="userId" value="@Model.User.Id" />
+
+    @foreach (var role in ViewBag.AllRoles)
+    {
+        <div>
+            <input type="checkbox" name="roles"
+                   value="@role"
+                   checked="@Model.Roles.Contains(role)" />
+            <label>@role</label>
+        </div>
+    }
+
+    <button class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CrudMVC_App.Entities.AuditLog>
+
+@{
+    ViewData["Title"] = "Audit Logs";
+}
+
+<h2>Audit Logs</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Action</th>
+            <th>Performed By</th>
+            <th>Target</th>
+            <th>Date / Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in Model)
+        {
+            <tr>
+                <td>@log.Action</td>
+                <td>@log.PerformedBy</td>
+                <td>@log.TargetUser</td>
+                <td>@log.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No audit logs available.
+    </div>
+}
