@@ -1,0 +1,44 @@
+﻿@using CrudMVC_App.Entities
+@model IEnumerable<CrudMVC_App.Entities.Product>
+
+<h2>Products</h2>
+@if (User.IsInRole(Roles.Admin))
+{
+    <a class="btn btn-primary" asp-action="Create">Add Product</a>
+}
+
+<table id="productsTable" class="table table-bordered mt-3">
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>
+                @if (User.IsInRole(Roles.Admin))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#productsTable').DataTable({
+            paging: true,
+            searching: true,
+            ordering: true,
+            pageLength: 5,
+            lengthMenu: [5, 10, 20]
+        });
+    });
+</script>

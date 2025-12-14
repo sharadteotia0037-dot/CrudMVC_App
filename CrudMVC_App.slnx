@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../CrudMVC_App.BLL/CrudMVC_App.BLL.csproj" />
+  <Project Path="../CrudMVC_App.DAL/CrudMVC_App.DAL.csproj" />
+  <Project Path="../CrudMVC_App.Entities/CrudMVC_App.Entities.csproj" />
+  <Project Path="CrudMVC_App.csproj" />
+</Solution>

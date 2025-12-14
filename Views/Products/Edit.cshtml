@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Mvc.Controllers
+@model CrudMVC_App.Entities.Product
+
+@{
+    var actionName =
+        (ViewContext.ActionDescriptor as ControllerActionDescriptor)?.ActionName;
+}
+
+<form asp-action="@actionName" method="post">
+    @Html.AntiForgeryToken()
+
+    <input asp-for="Name" class="form-control" placeholder="Name" />
+    <input asp-for="Price" class="form-control mt-2" />
+    <input asp-for="Quantity" class="form-control mt-2" />
+
+    <button class="btn btn-success mt-2">Save</button>
+</form>

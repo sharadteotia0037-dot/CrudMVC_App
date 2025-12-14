@@ -1,0 +1,26 @@
+﻿@model CrudMVC_App.Entities.RegisterVM
+
+<h2>Register</h2>
+
+<form asp-action="Register" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-2">
+        <label>Full Name</label>
+        <input asp-for="FullName" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label>Password</label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary">Register</button>
+</form>
+
+<a asp-action="Login">Already have an account? Login</a>
