@@ -139,5 +139,15 @@ namespace CrudMVC_App.Controllers
                 .ToList());
         }
 
+        public async Task<IActionResult> Enable2FA(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null) return NotFound();
+
+            await _userManager.SetTwoFactorEnabledAsync(user, true);
+
+            return RedirectToAction(nameof(Users));
+        }
+
     }
 }

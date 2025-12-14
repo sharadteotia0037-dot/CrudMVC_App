@@ -101,7 +101,21 @@
                             Restore
                         </a>
                     }
-
+                    @* Enable2FA *@
+                    @if (!user.TwoFactorEnabled)
+                    {
+                        <a asp-action="Enable2FA"
+                           asp-route-id="@user.Id"
+                           class="btn btn-warning btn-sm">
+                            Enable 2FA
+                        </a>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">
+                            2FA Enabled
+                        </span>
+                    }
                     @* Role management *@
                     <a asp-action="EditUserRoles"
                        asp-route-id="@user.Id"
